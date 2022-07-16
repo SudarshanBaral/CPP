@@ -1,89 +1,63 @@
-#include<iostream>
-#include<string.h>
-
+#include <iostream>
 using namespace std;
-
-class Employee
+class employee
 {
-   string name;
-   int id;
-   float salary;
+protected:
+    int eId, salary;
+    char eName[20];
 
-   public:
-   void setString(string str){
-    name=str;
-   }
-   string getString()
-   {
-    return name;
-   }
-      void setId(int i_d){
-    id=i_d;
-   }
-   int getId()
-   {
-    return id;
-   }
-   void setSalary(int wage)
-   {
-       salary = wage;
-   }
-   int getSalary()
-   {
-       return salary;
-   }
+public:
+    void getdata()
+    {
+        cout << "Enter employee id:" << endl;
+        cin >> eId;
+        cout << "Enter employee name:" << endl;
+        cin >> eName;
+        cout << "Enter employee salary:" << endl;
+        cin >> salary;
+    }
+
+    void displaydata()
+    {
+        cout << "Employee ID=" << eId << endl;
+        cout << "Employee Name=" << eName;
+        cout << "Employee Salary=" << salary;
+    }
 };
-class Company{
-     string company_name;
-     string company_location;
-     public:
-     Employee e;
-     void setCompanyName(string cname){
-    company_name=cname;
-   }
-   string getCompanyName()
-   {
-    return company_name;
-   }
-    void setCompanyLocation(string cadd){
-    company_location=cadd;
-   }
-   string getCompanyLocation()
-   {
-    return company_location;
-   }
-   void display()
-   {
-       cout << "The Employee name is: " << e.getId()<<endl;
-       cout << "The Employee Adress is: " << e.getString()<<endl;
-       cout<<"The Employee Salary is : "<<e.getSalary()<<endl;
-   } 
+
+class company
+{
+protected:
+    char cName[20];
+    char cLocation[20];
+    employee E;
+
+public:
+    void getCompanyData()
+    {
+        cout << "Enter company name:" << endl;
+        cin >> cName;
+        cout << "Enter company location:" << endl;
+        cin >> cLocation;
+
+        E.getdata();
+    }
+
+    void displaycompanydata()
+    {
+
+        cout << "Company Information:" << endl;
+        cout << "Company name=" << cName << endl;
+        cout << "Company Location=" << cLocation << endl;
+        cout << "Employee Information=" << endl;
+        E.displaydata();
+    }
 };
+
 int main()
 {
-    Company C;
-    C.setCompanyName("Origin");
-    C.setCompanyLocation("USA");
-    C.e.setId(1);
-    C.e.setString("robin");
-    C.e.setSalary(200000);
-    cout<<"The company name is: "<<C.getCompanyName()<<endl;
-    cout<<"The company location is: "<<C.getCompanyLocation()<<endl;
-    C.display();
-
+    company C;
+    C.getCompanyData();
+    C.displaycompanydata();
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
